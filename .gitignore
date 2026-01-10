@@ -53,3 +53,12 @@ dkms.conf
 
 # debug information files
 *.dwo
+# Object files
+*.o
+
+# Kernel or OS build outputs
+*.elf
+*.bin
+*.iso
+*.img
+*.map
