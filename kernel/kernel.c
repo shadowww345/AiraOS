@@ -109,7 +109,7 @@ void run_interper() {
         }
         
         if (end > start) {
-            print("Output: ");
+           
             for (int i = start; i < end; i++) put_char(file_system_buffer[i]);
             print("\n");
         }
