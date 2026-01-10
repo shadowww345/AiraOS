@@ -64,9 +64,7 @@ Clears all screen
 ```aira
 color a
 ```
-```aira
 Sets VGA text mode current color to 0x0A (green)
-```
 ```aira
 color b
 ```
