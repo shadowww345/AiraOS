@@ -27,6 +27,9 @@ sudo apt install grub-efi-amd64-bin grub-common
 
 **Type in the terminal**:
 
+sudo apt update
+sudo apt install qemu qemu-system-x86
+
 make
 
 #### The project is mainly for learning and experimentation.
