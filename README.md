@@ -19,7 +19,7 @@ This is just a hobby project / OS experiment.
 
 UEFI-compatible GRUB is needed to boot the ISO:
 
-sudo apt install grub-efi-amd64-bin grub-common
+
 
 ## Build
 
@@ -28,7 +28,11 @@ sudo apt install grub-efi-amd64-bin grub-common
 **Type in the terminal**:
 
 sudo apt update
+
+sudo apt install grub-efi-amd64-bin grub-common
+
 sudo apt install qemu qemu-system-x86
+
 
 make
 
