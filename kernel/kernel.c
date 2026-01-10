@@ -159,7 +159,7 @@ void kernel_main() {
                     cmd[idx] = '\0'; put_char('\n');
                     
                     if (compare_string(cmd, "nano")) run_nano();
-                    else if (compare_string(cmd, "cc")) run_interper();
+                    else if (compare_string(cmd, "compile")) run_interper();
                     else if (compare_string(cmd, "clear")) clear_screen();
                     else if (compare_string(cmd, "color a")) current_color = 0x0A;
                     else if (compare_string(cmd, "color b")) current_color = 0x0B;
