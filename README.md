@@ -26,14 +26,20 @@ UEFI-compatible GRUB is needed to boot the ISO:
 **Note**:If you are using Windows, install WSL to build.
 
 **Type in the terminal**:
-
+```
 sudo apt update
+```
 
+```bash
 sudo apt install grub-efi-amd64-bin grub-common
+```
 
+```bash
 sudo apt install qemu qemu-system-x86
+```
 
-
+```bash
 make
+```
 
 #### The project is mainly for learning and experimentation.
