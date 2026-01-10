@@ -46,4 +46,23 @@ make
 qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom aira.iso
 ```
 
+## Commands
+
+**nano**:Opens nano editor
+
+**compile**:It interprets the code written in the nano editor.
+
+**clear**:Clears all screen
+
+**color a**:Sets VGA text mode current color 0x0A (green)
+
+**color b**:Sets VGA text mode current color 0x0B (blue)
+
+**color c**:Sets VGA text mode current color 0x0C (red)
+
+**color 7**:Sets VGA text mode current color 0x07 (gray)
+
+**beep**:Enables the audio device and produces a 1200 Hz beep.
+
+
 #### The project is mainly for learning and experimentation.
