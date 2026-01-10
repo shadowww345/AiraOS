@@ -99,7 +99,7 @@ void clear_screen() {
     for (int i = 0; i < 80 * 25 * 2; i += 2) { video[i] = ' '; video[i+1] = current_color; }
     cursor_x = 0; cursor_y = 0; update_cursor(0, 0);
 }
-
+//I’m still developing this, it’s like my own little language.
 void run_interper() {
     if (file_size == 0) { print("No code founded!\n"); return; }
     if (starts_with(file_system_buffer, "print(\"")) {
@@ -147,7 +147,7 @@ void run_nano() {
 
 void kernel_main() {
     clear_screen();
-    print("AiraOS Ready.\n> ");
+    print("Welcome To AiraOS!\n> ");
     char cmd[64]; int idx = 0;
 
     while(1) {
@@ -165,8 +165,8 @@ void kernel_main() {
                     else if (compare_string(cmd, "color b")) current_color = 0x0B;
                     else if (compare_string(cmd, "color c")) current_color = 0x0C;
                     else if (compare_string(cmd, "color 7")) current_color = 0x07;
-                    else if (compare_string(cmd, "beep")) {print("Bipleniyor...\n");beep();}
-                    else if (idx > 0) print("Bilinmeyen komut.\n");
+                    else if (compare_string(cmd, "beep")) {beep();}
+                    else if (idx > 0) print("Undefined Command\n");
                     
                     idx = 0; print("> ");
                 } else if (c == '\b' && idx > 0) {
