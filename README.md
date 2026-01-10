@@ -42,4 +42,8 @@ sudo apt install qemu qemu-system-x86
 make
 ```
 
+```bash
+qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom aira.iso
+```
+
 #### The project is mainly for learning and experimentation.
