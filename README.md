@@ -23,9 +23,10 @@ sudo apt install grub-efi-amd64-bin grub-common
 
 ## Build
 
-**Note**:if you are using windows install wsl for building
+**Note**:If you are using Windows, install WSL to build.
 
 **Type in the terminal**:
+
 make
 
 #### The project is mainly for learning and experimentation.
