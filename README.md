@@ -7,9 +7,9 @@ Minimal kernel with a terminal prompt (>)
 
 Simple nano-like editor
 
-Basic interpreter for small commands
+Has a mini language (I’m still developing it)
 
-Beep sound support
+Sound Device
 
 Screen color changes
 
