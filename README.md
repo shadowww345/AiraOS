@@ -73,7 +73,7 @@ Sets VGA text mode current color to 0x0B (blue)
 ```aira
 color c
 ```
-Sets VGA text mode current color t0 0x0C (red)
+Sets VGA text mode current color to 0x0C (red)
 
 ```aira
 color 7
