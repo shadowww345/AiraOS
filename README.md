@@ -47,39 +47,39 @@ qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom 
 ```
 
 ## Commands
-```ash
+```acmd
 nano
 ```
 Opens nano editor
 
-```ash
+```acmd
 compile
 ``` 
 It interprets the code written in the nano editor.
 
-```ash
+```acmd
 clear
 ```
 Clears all screen
-```ash
+```acmd
 color a
 ```
 Sets VGA text mode current color to 0x0A (green)
-```ash
+```acmd
 color b
 ```
 Sets VGA text mode current color to 0x0B (blue)
 
-```ash
+```acmd
 color c
 ```
 Sets VGA text mode current color to 0x0C (red)
 
-```ash
+```acmd
 color 7
 ```
 Sets VGA text mode current color to 0x07 (gray)
-```ash
+```acmd
 beep
 ```
 Enables the audio device and produces a 1200 Hz beep.
