@@ -7,7 +7,7 @@ Minimal kernel with a terminal prompt (>)
 
 Simple nano-like editor
 
-Has a mini language (I’m still developing it)
+Has a mini language (.aira)
 
 Sound Device
 
@@ -86,6 +86,6 @@ Enables the audio device and produces a 1200 Hz beep.
 
 ## If you like the project, give it a ⭐!
 
-### Lua compiling support and new functions comming soon...
+### Lua compiling support and new aira functions comming soon...
 
 #### The project is mainly for learning and experimentation.
