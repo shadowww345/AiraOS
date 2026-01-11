@@ -47,43 +47,45 @@ qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom 
 ```
 
 ## Commands
-```aira
+```ash
 nano
 ```
 Opens nano editor
 
-```aira
+```ash
 compile
 ``` 
 It interprets the code written in the nano editor.
 
-```aira
+```ash
 clear
 ```
 Clears all screen
-```aira
+```ash
 color a
 ```
 Sets VGA text mode current color to 0x0A (green)
-```aira
+```ash
 color b
 ```
 Sets VGA text mode current color to 0x0B (blue)
 
-```aira
+```ash
 color c
 ```
 Sets VGA text mode current color to 0x0C (red)
 
-```aira
+```ash
 color 7
 ```
 Sets VGA text mode current color to 0x07 (gray)
-```aira
+```ash
 beep
 ```
 Enables the audio device and produces a 1200 Hz beep.
 
 ## If you like the project, give it a ⭐!
+
+### Lua compiling support and new functions comming soon...
 
 #### The project is mainly for learning and experimentation.
