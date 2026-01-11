@@ -84,5 +84,6 @@ beep
 ```
 Enables the audio device and produces a 1200 Hz beep.
 
+## If you like the project, give it a ⭐!
 
 #### The project is mainly for learning and experimentation.
