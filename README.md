@@ -47,7 +47,7 @@ qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom 
 ```
 
 ## Commands
-```air
+```aira
 nano
 ```
 Opens nano editor
