@@ -1,6 +1,8 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 
+## Check the issues on GitHub
+
 ## Features
 
 Minimal kernel with a terminal prompt (>)
