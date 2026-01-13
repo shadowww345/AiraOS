@@ -87,5 +87,6 @@ Enables the audio device and produces a 1200 Hz beep.
 ## If you like the project, give it a ⭐!
 
 ### Lua compiling support and new functions (loop and variable system for .aira) coming soon...
+##### Lua support is in early development
 
 #### The project is mainly for learning and experimentation.
