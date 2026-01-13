@@ -43,7 +43,7 @@ make
 ```
 
 ```bash
-qemu-system-i386 -audiodev pa,id=speaker -machine pcspk-audiodev=speaker -cdrom aira.iso
+qemu-system-i386 -device sb16 -audiodev pa,id=snd0 -machine pcspk-audiodev=snd0 -cdrom aira.iso
 ```
 
 ## Commands
@@ -53,7 +53,7 @@ nano
 Opens nano editor
 
 ```acmd
-compile
+compile filename.aira
 ``` 
 It interprets the code written in the nano editor.
 
@@ -86,7 +86,7 @@ Enables the audio device and produces a 1200 Hz beep.
 
 ## If you like the project, give it a ⭐!
 
-### Lua compiling support and new functions (loop and variable system for .aira) coming soon...
+### Lua compiling support coming soon...
 ##### Lua support is in early development
 
 #### The project is mainly for learning and experimentation.
