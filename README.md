@@ -104,6 +104,7 @@ loop 10
   print("hello world")
 endloop
 ```
+loops
 ```
 beep(440)
 beep(440,10)
