@@ -1,7 +1,7 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 
-## Check the issues on GitHub
+I would like to thank everyone who has shown interest in the project. Since I need to focus on my own AI framework, and due to the lack of resources for certain functions as well as my limited time, I couldn't find enough free time for this project lately. I will continue at full speed during the summer. Also, I would be happy if you contribute to the development.
 
 ## Features
 
@@ -89,10 +89,58 @@ Sets VGA text mode current color to 0x07 (gray)
 beep
 ```
 Enables the audio device and produces a 1200 Hz beep.
+## Aira Proggraming Language Tutorial
+```
+print("hello world")
+```
+prints string or variable
+```
+set varstr = "hello"
+set varint = 10
+```
+variable definition
+```
+loop 10
+  print("hello world")
+endloop
+```
+```
+beep(440)
+beep(440,10)
+```
+beeps freq or freq and duration
+```
+color a
+color b
+color c
+color 7
+```
+changes color a/b/c/7
+```
+sleep(50)
+```
+cpu sleeps miliseconds
+```
+add 1,1
+sub 1,1
+mul 1,1
+div 10,0
+```
+mathematichs
+
+## Example
+```
+set freq = 10
+color a
+loop 100
+  beep(freq,50)
+  add freq,10
+  print("freq is:")
+  print(freq)
+  sleep(30)
+endloop
+```
 
 ## If you like the project, give it a ⭐!
-
-### Lua compiling support coming soon...
-##### Lua support is in early development
 
 #### The project is mainly for learning and experimentation.
