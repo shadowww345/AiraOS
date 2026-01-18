@@ -1,8 +1,6 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 
-I would like to thank everyone who has shown interest in the project. Since I need to focus on my own AI framework, and due to the lack of resources for certain functions as well as my limited time, I couldn't find enough free time for this project lately. I will continue at full speed during the summer. Also, I would be happy if you contribute to the development.
-
 ## Features
 
 Minimal kernel with a terminal prompt (>)
