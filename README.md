@@ -10,7 +10,7 @@ Simple nano-like editor
 
 Has a mini language (.aira)
 
-Sound Device
+Sound Device, Sound Blaster 16 and PC Speaker
 
 Screen color changes
 
@@ -22,7 +22,13 @@ This is just a hobby project / OS experiment.
 
 UEFI-compatible GRUB is needed to boot the ISO:
 
-
+## Images
+![Booting](images/boot.png)
+![Normal menu](images/normal.png)
+![Colors](images/colors.png)
+![Nano](images/nano.png)
+![Compile](images/compıle.png)
+![Panic Screen](images/panic.png)
 
 ## Build
 
