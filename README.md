@@ -1,6 +1,7 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 
+![](images/aira_os.jpg)
 ## Features
 
 Minimal kernel with a terminal prompt (>)
@@ -12,6 +13,8 @@ Has a mini language (.aira)
 Sound Device
 
 Screen color changes
+
+VESA Graphics 1024x768
 
 **Notes**
 
