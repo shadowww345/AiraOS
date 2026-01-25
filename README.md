@@ -46,10 +46,7 @@ make
 ```
 
 ```bash
-qemu-system-i386 -cdrom aira.iso \
-  -device sb16,audiodev=snd0 \
-  -machine pcspk-audiodev=snd0 \
-  -audiodev pa,id=snd0,out.mixing-engine=off,timer-period=1000
+make run
 
 ```
 
