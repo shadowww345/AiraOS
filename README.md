@@ -27,7 +27,7 @@ UEFI-compatible GRUB is needed to boot the ISO:
 ![Normal menu](images/normal.png)
 ![Colors](images/colors.png)
 ![Nano](images/nano.png)
-![Compile](images/compıle.png)
+![Compile](https://github.com/shadowww345/AiraOS/blob/main/images/compile.png)
 ![Panic Screen](images/panic.png)
 
 ## Build
