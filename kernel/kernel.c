@@ -82,7 +82,7 @@ void* malloc(int size) {
 
     return res;
 }
-void free(void* ptr) {}""
+void free(void* ptr) {}
 
 /*-- KERNEL MAIN --*/
 void kernel_main() {
