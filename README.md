@@ -92,6 +92,7 @@ Sets VGA text mode current color to 0x07 (gray)
 ```acmd
 beep
 ```
+440hz beep sound
 ```acmd
 reboot
 ```
