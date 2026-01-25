@@ -101,7 +101,6 @@ Reboots pc
 testpanic
 ```
 Test panic screen
-Enables the audio device and produces a 1200 Hz beep.
 ## Aira Proggraming Language Tutorial
 ```
 print("hello world")
