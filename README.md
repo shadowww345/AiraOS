@@ -92,6 +92,14 @@ Sets VGA text mode current color to 0x07 (gray)
 ```acmd
 beep
 ```
+```acmd
+reboot
+```
+Reboots pc
+```acmd
+testpanic
+```
+Test panic screen
 Enables the audio device and produces a 1200 Hz beep.
 ## Aira Proggraming Language Tutorial
 ```
