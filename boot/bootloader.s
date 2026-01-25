@@ -1,13 +1,18 @@
 
 MAGIC    equ 0x1BADB002
-FLAGS    equ 0x00
+FLAGS    equ 0x00000007
 CHECKSUM equ -(MAGIC + FLAGS)
 
 section .multiboot
     align 4
     dd MAGIC
     dd FLAGS
-    dd CHECKSUM
+    dd -(MAGIC + FLAGS)
+    dd 0, 0, 0, 0, 0
+    dd 0
+    dd 1024
+    dd 768
+    dd 32
 
 section .text
 extern kernel_main
