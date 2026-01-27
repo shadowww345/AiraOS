@@ -20,8 +20,6 @@ VESA Graphics 1024x768
 
 This is just a hobby project / OS experiment.
 
-UEFI-compatible GRUB is needed to boot the ISO:
-
 ## Images
 ![Booting](images/boot.png)
 ![Normal menu](images/normal.png)
@@ -31,9 +29,8 @@ UEFI-compatible GRUB is needed to boot the ISO:
 ![Panic Screen](images/panic.png)
 
 ## Build
-
+UEFI-compatible GRUB is needed to boot the ISO:
 **Note**:If you are using Windows, install WSL to build.
-
 **Type in the terminal**:
 ```
 sudo apt update
