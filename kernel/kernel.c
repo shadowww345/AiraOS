@@ -96,10 +96,10 @@ void kernel_main() {
         print("[ERROR]Sound Device initilaze failed\n");
     }
     for(volatile int i=0; i<1000000000; i++);
-    print("BOOTING:İnitizaled ALL \n");
+    print("BOOTING:Initizaled ALL \n");
     print("BOOTING:Successfully Booted \n");
     print("BOOTING:ALL OK \n");
-    for(volatile int i=0; i<1000000000; i++);  
+    for(volatile int i=0; i<100000000; i++);  
     //These words? Just here to look fancy, literally means nothing.
     clear_screen();
     print(aira_os);
