@@ -30,6 +30,7 @@ This is just a hobby project / OS experiment.
 
 ## Build
 UEFI-compatible GRUB is needed to boot the ISO:
+
 **Note**:If you are using Windows, install WSL to build.
 **Type in the terminal**:
 ```
