@@ -127,10 +127,10 @@ void run_interper() {
         else if (starts_with(&file_system_buffer[i], "color ")) {
             i += 6; 
             char color_code = file_system_buffer[i];
-            if (color_code == 'a') current_color = 0x0A;
-            else if (color_code == 'b') current_color = 0x0B;
-            else if (color_code == 'c') current_color = 0x0C;
-            else if (color_code == '7') current_color = 0x07;
+            if (color_code == 'a') current_color = 0x339933;
+            else if (color_code == 'b') current_color = 0xFF3333;
+            else if (color_code == 'c') current_color = 0x66FFCC;
+            else if (color_code == '7') current_color = 0xFFFFCC;
             i++;
         }
       
