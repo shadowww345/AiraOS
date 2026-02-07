@@ -16,6 +16,8 @@ Screen color changes
 
 VESA Graphics 1024x768
 
+FAT12 FS
+
 **Notes**
 
 This is just a hobby project / OS experiment.
@@ -99,6 +101,10 @@ Reboots pc
 testpanic
 ```
 Test panic screen
+```acmd
+ls
+```
+list directory
 ## Aira Proggraming Language Tutorial
 ```
 print("hello world")
