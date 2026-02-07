@@ -33,7 +33,7 @@ void stop_sound();
 void beep();
 void beep_with_duration(int freq, int duration);
 void beep_freq(int freq);
-void prepare_audio();
+void prepare_audio(uint32_t start_lba);
 void play_wav(uint8_t* wav_data);
 
 #endif
