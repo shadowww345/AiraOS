@@ -18,6 +18,8 @@ VESA Graphics 1024x768
 
 FAT12 FS
 
+WAV sound play
+
 **Notes**
 
 This is just a hobby project / OS experiment.
