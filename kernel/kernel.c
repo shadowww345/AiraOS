@@ -113,7 +113,7 @@ void kernel_main() {
     outb(0x60, 0xED); 
     outb(0x60, 0x07);
     outb(0x0A, 0x01);
-    prepare_audio();
+    prepare_audio(500);
     play_wav(sound_buffer);
     char cmd[64]; int idx = 0;
     draw_panel();
