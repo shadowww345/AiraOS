@@ -13,6 +13,7 @@
 #include <graphics.h>
 #include <aira_lang.h>
 #include <sound.h>
+#include <fat12.h>
 
 unsigned int bgcolor = 0xFF0033;
 int file_size = 0; 
@@ -96,10 +97,10 @@ void kernel_main() {
         print("[ERROR]Sound Device initilaze failed\n");
     }
     for(volatile int i=0; i<1000000000; i++);
-    print("BOOTING:Initizaled ALL \n");
+    print("BOOTING:İnitizaled ALL \n");
     print("BOOTING:Successfully Booted \n");
     print("BOOTING:ALL OK \n");
-    for(volatile int i=0; i<100000000; i++);  
+    for(volatile int i=0; i<1000000000; i++);  
     //These words? Just here to look fancy, literally means nothing.
     clear_screen();
     print(aira_os);
@@ -112,7 +113,10 @@ void kernel_main() {
     outb(0x60, 0xED); 
     outb(0x60, 0x07);
     outb(0x0A, 0x01);
+    prepare_audio();
+    play_wav(sound_buffer);
     char cmd[64]; int idx = 0;
+    draw_panel();
     while(1) {
     if (inb(0x64) & 0x01) {
         unsigned char scancode = inb(0x60);
@@ -144,6 +148,7 @@ void kernel_main() {
                     else if (compare_string(cmd, "beep")) {beep();}
                     else if (compare_string(cmd,"testpanic")) panic("This is test panic.");
                     else if (compare_string(cmd,"reboot")) reboot();
+                    else if (compare_string(cmd,"ls")) list_root_directory();
                     else if (compare_string(cmd, "safemode")) { // Very safe mode for cpu : )
                         beep_freq(70);
                         print("GORDON GET AWAY FROM THE MACHINE \n"); // I forgot what he says.
