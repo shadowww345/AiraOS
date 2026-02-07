@@ -116,7 +116,6 @@ void kernel_main() {
     prepare_audio(500);
     play_wav(sound_buffer);
     char cmd[64]; int idx = 0;
-    draw_panel();
     while(1) {
     if (inb(0x64) & 0x01) {
         unsigned char scancode = inb(0x60);
