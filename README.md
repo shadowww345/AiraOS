@@ -1,7 +1,7 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 
-![](images/aira_os.jpg)
+![](images/aira.jpg)
 ## Features
 
 Minimal kernel with a terminal prompt (>)
