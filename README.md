@@ -46,7 +46,9 @@ EFI-compatible GRUB is needed to boot the ISO:
 
 **Note**:If you are using Windows, install WSL to build.
 
+
 **Type in the terminal**:
+
 ```
 sudo apt update
 ```
