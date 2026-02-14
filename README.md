@@ -1,7 +1,16 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
-
 ![](images/aira.png)
+
+### Note:
+**If you want to boot Airaos on a physical computer:**
+
+  1-First, type lspci -v -s 00:02.0 into the terminal.
+
+  2-Take the resulting hex values (such as E00... or FD000...).
+
+  3-Place them into the vesa variable in graphics.c and compile.
+
 ## Features
 
 Minimal kernel with a terminal prompt (>)
