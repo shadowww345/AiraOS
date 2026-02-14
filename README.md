@@ -3,7 +3,7 @@ This is my first attempt at creating an operating system. It is a minimal OS pro
 ![](images/aira.png)
 
 ### Note:
-**If you want to boot Airaos on a physical computer:**
+**If you want to boot AiraOS on a physical computer:**
 
   1-First, type lspci -v -s 00:02.0 into the terminal.
 
