@@ -76,21 +76,21 @@ Clears all screen
 ```acmd
 color a
 ```
-Sets VGA text mode current color to 0x0A (green)
+Sets color to green
 ```acmd
 color b
 ```
-Sets VGA text mode current color to 0x0B (blue)
+Sets color to blue
 
 ```acmd
 color c
 ```
-Sets VGA text mode current color to 0x0C (red)
+Sets color to red
 
 ```acmd
 color 7
 ```
-Sets VGA text mode current color to 0x07 (gray)
+Sets color to white
 ```acmd
 beep
 ```
