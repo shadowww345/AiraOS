@@ -12,7 +12,9 @@ This is my first attempt at creating an operating system. It is a minimal OS pro
   3-Place them into the vesa variable in graphics.c and compile.
 
 **If using rufus:**
+
   1-Select MBR
+  
   2.and select bios boot
 
 ## Features
