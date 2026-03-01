@@ -53,7 +53,9 @@ void panic(const char* messg) {
     print(messg);
     print("\n Please reboot your computer manually. \n");
     for(;;) {
-        __asm__("hlt");
+        __asm__("cli");
+        for(volatile int i=0; i<1000000000; i++);
+        reboot();
     }
 }
 
