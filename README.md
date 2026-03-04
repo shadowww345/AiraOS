@@ -1,8 +1,7 @@
 # AiraOS
-Organization repo:https://github.com/Aira-prj/AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 ![](images/aira.png)
-
+### Organization repo:https://github.com/Aira-prj/AiraOS
 ### Note:
 **If you want to boot AiraOS on a physical computer:**
 
