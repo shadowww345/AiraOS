@@ -1,4 +1,3 @@
-
 MAGIC    equ 0x1BADB002
 FLAGS    equ 0x00000007
 CHECKSUM equ -(MAGIC + FLAGS)
@@ -20,8 +19,8 @@ global _start
 
 _start:
     mov esp, stack_top
-    cli
     call kernel_main
+
 .hang:
     hlt
     jmp .hang
@@ -43,6 +42,25 @@ outb:
     mov edx, [esp + 4]   
     mov al, [esp + 8]    
     out dx, al       
+    ret
+
+global bios_read_sector
+
+bios_read_sector:
+    push bp
+    mov bp, sp
+
+    mov ah, 02h
+    mov al, 1
+    mov ch, [bp+8]
+    mov cl, [bp+12]
+    mov dh, [bp+16]
+    mov dl, 0
+    mov bx, [bp+20]
+
+    int 13h
+    
+    pop bp
     ret
     
 section .bss
