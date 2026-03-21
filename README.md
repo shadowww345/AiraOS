@@ -1,21 +1,6 @@
 # AiraOS
 This is my first attempt at creating an operating system. It is a minimal OS project and is not intended for actual use.
 ![](images/aira.png)
-### Organization repo:https://github.com/Aira-prj/AiraOS
-### Note:
-**If you want to boot AiraOS on a physical computer:**
-
-  1-First, type lspci -v -s 00:02.0 into the terminal.
-
-  2-Take the resulting hex values (such as E00... or FD000...).
-
-  3-Place them into the vesa variable in graphics.c and compile.
-
-**If using rufus:**
-
-  1-Select MBR
-  
-  2.and select bios boot
 
 ## Features
 
