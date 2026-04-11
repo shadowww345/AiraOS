@@ -101,7 +101,7 @@ void list_root_directory() {
         if (entries[i].filename[0] == 0) break;
         if (entries[i].filename[0] == 0xE5) continue;
         print(entries[i].filename);
-        uint16_t cluster = *(uint16_t*)(entries + 27);
+        uint16_t cluster = *(uint16_t*)(entries[i]);
         print(" - Cluster: ");
         print_int(cluster);
         print("\n");
