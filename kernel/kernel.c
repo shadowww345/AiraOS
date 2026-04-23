@@ -1,13 +1,4 @@
 
-/*
- * [ AiraOS v2.0 - GUI Note ]
- * * I tried to implement a Graphical User Interface (GUI), but it is 
- * quite complex and time-consuming at this stage. 
- *
- * For now, I am focusing on the kernel core and backend logic. 
- * If anyone wants to develop a GUI for AiraOS, feel free to contribute!
- * Maybe ı make little GUI
- */
 
 #include <kernel.h>
 #include <graphics.h>
