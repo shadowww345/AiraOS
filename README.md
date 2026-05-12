@@ -45,11 +45,11 @@ sudo apt update
 ```
 
 ```bash
-sudo apt install grub-efi-amd64-bin grub-common
+sudo apt install build-essential gcc-multilib mtools xorriso grub-pc-bi nasm gcc
 ```
 
 ```bash
-sudo apt install qemu qemu-system-x86
+sudo apt install qemu-system-i386
 ```
 
 ```bash
