@@ -36,6 +36,7 @@ const char* aira_os= R"(
    A I R A  O S 
 )";
 void panic(const char* messg) {
+    __asm__("cli");
     clear_screen();
     set_background(0xFF003399);
     current_color = 0xFF000000;
