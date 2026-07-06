@@ -45,7 +45,7 @@ sudo apt update
 ```
 
 ```bash
-sudo apt install build-essential gcc-multilib mtools xorriso grub-pc-bi nasm gcc
+sudo apt install build-essential gcc-multilib mtools xorriso grub-pc-bin nasm gcc
 ```
 
 ```bash
