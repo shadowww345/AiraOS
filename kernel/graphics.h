@@ -13,7 +13,7 @@ void put_char(char c);
 void print(const char* str);
 void print_int(int n);
 void clear_screen();
-void clear_color();
+void clear_color(unsigned int color);
 void set_background(unsigned int color);
 void draw_status_bar();
 
