@@ -4,6 +4,8 @@ This is my first attempt at creating an operating system. It is a minimal OS pro
 
 ## Features
 
+FAT32+Auto İnit incoming
+
 Minimal kernel with a terminal prompt (>)
 
 Simple nano-like editor
