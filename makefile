@@ -9,24 +9,51 @@ ISO_DIR = isodir
 BOOT_DIR = $(ISO_DIR)/boot
 GRUB_DIR = $(BOOT_DIR)/grub
 FLOPPY_IMG = floppy.img
+HDD32_IMG = hdd32.img
 
 SRCS = $(wildcard kernel/*.c)
 OBJS = $(SRCS:.c=.o)
 BOOT_OBJ = boot/bootloader.o
+ISR_OBJ= kernel/isr_stubs.o
+TSK_OBJ= kernel/task_switch.o
 
-all: aira.iso $(FLOPPY_IMG)
-
-$(FLOPPY_IMG):
+all: aira.iso $(FLOPPY_IMG) $(HDD32_IMG)
+#ffmpeg -i input.mp3 -acodec pcm_u8 -ac 1 -ar 44100 -f wav output.wav
+$(FLOPPY_IMG): test.txt startup.wav genc_osman.wav
+	rm -f $(FLOPPY_IMG)
 	dd if=/dev/zero of=$(FLOPPY_IMG) bs=1024 count=30000
 	mkfs.fat -F 12 $(FLOPPY_IMG)
 	mcopy -i $(FLOPPY_IMG) test.txt ::TEST.TXT
 	mcopy -i $(FLOPPY_IMG) startup.wav ::STARTUP.WAV
-	dd if=startup.wav of=$(FLOPPY_IMG) bs=512 seek=500 conv=notrunc
 
-kernel.bin: $(BOOT_OBJ) $(OBJS)
-	$(LD) $(LDFLAGS) $(BOOT_OBJ) $(OBJS) -o kernel.bin
+
+$(HDD32_IMG):
+	rm -f $(HDD32_IMG)
+	dd if=/dev/zero of=$(HDD32_IMG) bs=1M count=1024
+	mkfs.fat -F 32 $(HDD32_IMG)
+	mcopy -i $(HDD32_IMG) test.txt ::test.txt
+	mcopy -i $(HDD32_IMG) beep.asm ::beep.asm
+	mcopy -i $(HDD32_IMG) hi.bin ::hi.bin
+	mcopy -i $(HDD32_IMG) kv2.wav ::kv2.wav
+	mcopy -i $(HDD32_IMG) snowy.wav ::snowy.wav
+	mcopy -i $(HDD32_IMG) snowy.bmp ::snowy.bmp
+	mcopy -i $(HDD32_IMG) kv.wav ::kv.wav
+	mcopy -i $(HDD32_IMG) yumul.wav ::yumul.wav
+	mcopy -i $(HDD32_IMG) gencosman.wav ::gencosman.wav
+	mcopy -i $(HDD32_IMG) startup.wav ::startup.wav
+	mcopy -i $(HDD32_IMG) DOOM1.WAD ::DOOM1.WAD
+	mmd -i $(HDD32_IMG) ::/testdir
+
+kernel.bin: $(BOOT_OBJ) $(OBJS) $(ISR_OBJ) $(TSK_OBJ)
+	$(LD) $(LDFLAGS) $(BOOT_OBJ) $(OBJS) $(ISR_OBJ) $(TSK_OBJ) -o kernel.bin
 
 $(BOOT_OBJ): boot/bootloader.s
+	$(AS) $(ASFLAGS) $< -o $@
+
+$(ISR_OBJ): kernel/isr_stubs.s
+	$(AS) $(ASFLAGS) $< -o $@
+
+$(TSK_OBJ): kernel/task_switch.s
 	$(AS) $(ASFLAGS) $< -o $@
 
 kernel/%.o: kernel/%.c
@@ -48,13 +75,13 @@ aira.iso: kernel.bin
 	grub-mkrescue -o aira.iso $(ISO_DIR)
 
 clean:
-	rm -rf kernel/*.o boot/*.o kernel.bin aira.iso $(ISO_DIR) $(FLOPPY_IMG)
+	rm -rf kernel/*.o boot/*.o kernel.bin aira.iso $(ISO_DIR) $(FLOPPY_IMG) $(HDD32_IMG)
 
-run: aira.iso $(FLOPPY_IMG)
+run: aira.iso $(HDD32_IMG)
 	qemu-system-i386 -boot d \
 	-cdrom aira.iso \
-	-drive file=$(FLOPPY_IMG),format=raw,if=ide,bus=0,unit=0,media=disk \
-	-device sb16,audiodev=snd0 \
+	-drive file=hdd32.img,format=raw,if=ide,bus=0,unit=0,media=disk \
+	-device sb16,audiodev=snd0,irq=5,dma=1 \
 	-machine pcspk-audiodev=snd0 \
 	-audiodev pa,id=snd0,out.mixing-engine=off,timer-period=1000
 
