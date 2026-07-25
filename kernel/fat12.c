@@ -1,4 +1,3 @@
-
 #include <kernel.h>
 #include <graphics.h>
 #include <sound.h>
@@ -11,10 +10,14 @@ unsigned short inw(unsigned short port) {
     return result;
 }
 
-void read_sector(uint32_t lba, uint8_t *buffer) {
+static void outw(unsigned short port, unsigned short val) {
+    __asm__ __volatile__ ("outw %0, %1" : : "a"(val), "Nd"(port));
+}
+
+static void read_sector_ex(uint32_t lba, uint8_t *buffer, uint8_t drive_select) {
     while (inb(0x1F7) & 0x80);
 
-    outb(0x1F6, (0xE0 | ((lba >> 24) & 0x0F)));
+    outb(0x1F6, (drive_select | ((lba >> 24) & 0x0F)));
     outb(0x1F2, 1);
     outb(0x1F3, (uint8_t)lba);
     outb(0x1F4, (uint8_t)(lba >> 8));
@@ -31,10 +34,56 @@ void read_sector(uint32_t lba, uint8_t *buffer) {
             return; 
         }
         if (status & 0x01) { 
-        	print("Read Failed");
+            print("Read Failed");
             return;
         }
     }
+}
+
+static int write_sector_ex(uint32_t lba, const uint8_t *buffer, uint8_t drive_select) {
+    while (inb(0x1F7) & 0x80);
+
+    outb(0x1F6, (drive_select | ((lba >> 24) & 0x0F)));
+    outb(0x1F2, 1);
+    outb(0x1F3, (uint8_t)lba);
+    outb(0x1F4, (uint8_t)(lba >> 8));
+    outb(0x1F5, (uint8_t)(lba >> 16));
+    outb(0x1F7, 0x30);
+
+    for (int timeout = 0; timeout < 100000; timeout++) {
+        uint8_t status = inb(0x1F7);
+        if (status & 0x01) {
+            print("Write Failed (ERR)\n");
+            return 0;
+        }
+        if (!(status & 0x80) && (status & 0x08)) {
+            for (int j = 0; j < 256; j++) {
+                uint16_t data = buffer[j * 2] | (buffer[j * 2 + 1] << 8);
+                outw(0x1F0, data);
+            }
+            outb(0x1F7, 0xE7);
+            while (inb(0x1F7) & 0x80);
+            return 1;
+        }
+    }
+    print("Write Failed (timeout)\n");
+    return 0;
+}
+
+void read_sector(uint32_t lba, uint8_t *buffer) {
+    read_sector_ex(lba, buffer, 0xE0);
+}
+
+void read_sector_slave(uint32_t lba, uint8_t *buffer) {
+    read_sector_ex(lba, buffer, 0xF0);
+}
+
+int write_sector(uint32_t lba, const uint8_t *buffer) {
+    return write_sector_ex(lba, buffer, 0xE0);
+}
+
+int write_sector_slave(uint32_t lba, const uint8_t *buffer) {
+    return write_sector_ex(lba, buffer, 0xF0);
 }
 
 uint32_t cluster_to_lba(uint16_t cluster, struct FAT12_BPB *bpb) {

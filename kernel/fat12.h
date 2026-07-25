@@ -32,6 +32,11 @@ typedef struct FAT12_DirectoryEntry {
 
 unsigned short inw(unsigned short port);
 void read_sector(uint32_t lba, uint8_t *buffer);
+void read_sector_slave(uint32_t lba, uint8_t *buffer);
+
+int write_sector(uint32_t lba, const uint8_t *buffer);
+int write_sector_slave(uint32_t lba, const uint8_t *buffer);
+
 uint32_t cluster_to_lba(uint16_t cluster, struct FAT12_BPB *bpb);
 uint16_t get_next_cluster(uint16_t current, uint8_t *fat_table);
 void load_file(const char* fat_name, uint8_t* load_address, FAT12_BPB* bpb);

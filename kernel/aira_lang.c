@@ -1,9 +1,9 @@
-
 #include <aira_lang.h>
 #include <kernel.h>
 #include <graphics.h>
 #include <sound.h>
-
+#include <task.h>
+#include <fat32.h>
 struct Variable var_table[50];
 
 int compare_string(char* s1, char* s2) {
@@ -45,22 +45,21 @@ int loop_start_index = 0;
 void get_string(char* buffer, int max_len) {
     int i = 0;
     while (i < max_len - 1) {
-        if (inb(0x64) & 0x01) {
-            unsigned char scancode = inb(0x60);
-            if (!(scancode & 0x80)) {
-                char c = keyboard_map[scancode];
-                if (c == '\n') break;
-                if (c == '\b' && i > 0) {
-                    i--; put_char('\b');
-                } else if (c != 0) {
-                    buffer[i++] = c;
-                    put_char(c);
-                }
-            }
+        char c = poll_keyboard();
+        if (c == 0) continue;
+ 
+        if (c == '\n') break;
+        if (c == '\b' && i > 0) {
+            i--; put_char('\b');
+        } else if (c != 0) {
+            buffer[i++] = c;
+            put_char(c);
         }
     }
     buffer[i] = '\0';
 }
+ 
+
 
 void process_math(int op, int *i) {
     char vname[16]; int v_ptr = 0;
@@ -85,6 +84,7 @@ void process_math(int op, int *i) {
 
 //I’m still developing this, it’s like my own little language.
 void run_interper() {
+    yield();
     if (file_size == 0) { print("No code found!\n"); return; }
     int   vars_int[10];
     float vars_float[10];
@@ -286,37 +286,32 @@ else if (starts_with(&file_system_buffer[i], "endloop")) {
 }
 
 
-
-
 void run_nano() {
     clear_screen();
     print("--- NANO | ESC to SAVE ---\n");
-    
+ 
     char temp_buffer[1024];
     int temp_size = 0;
-
-    while(1) {
-        if (inb(0x64) & 0x01) {
-            unsigned char scancode = inb(0x60);
-            if (!(scancode & 0x80)) {
-                if (scancode == 0x01) break;
-                
-                char c = keyboard_map[scancode];
-                if (c == '\b' && temp_size > 0) {
-                    temp_size--; put_char('\b');
-                } else if (c != 0 && temp_size < 1023) {
-                    temp_buffer[temp_size++] = c;
-                    put_char(c);
-                }
-            }
+ 
+    while (1) {
+        char c = poll_keyboard();
+        if (c == 0) continue;
+ 
+        if (c == 27) break; // ESC
+ 
+        if (c == '\b' && temp_size > 0) {
+            temp_size--; put_char('\b');
+        } else if (c != 0 && temp_size < 1023) {
+            temp_buffer[temp_size++] = c;
+            put_char(c);
         }
     }
     temp_buffer[temp_size] = '\0';
-
+ 
     print("\nSave as (filename.aira): ");
     char fname[32];
     get_string(fname, 32);
-
+ 
     if (fname[0] != '\0') {
         for(int i=0; i<10; i++) {
             if(!files[i].active) {

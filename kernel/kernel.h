@@ -17,16 +17,15 @@ extern struct File {
     int active;
 };
 extern unsigned char keyboard_map[128];
+extern unsigned char keyboard_map_shift[128];
 extern struct File files[10];
 
 extern uint32_t free_mem_addr;
 extern uint32_t mem_limit;
 
 void reboot();
-void* malloc(int size);
-void free(void* ptr);
 void panic(const char* messg);
-
+char poll_keyboard();
 
 
 #endif

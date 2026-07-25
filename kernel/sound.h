@@ -4,7 +4,12 @@
 typedef unsigned int   uint32_t;
 typedef unsigned short uint16_t;
 typedef unsigned char  uint8_t;
+typedef signed int   int32_t;
+typedef signed short int16_t;
+typedef signed char  int8_t;
+
 extern uint8_t* sound_buffer;
+
 typedef struct {
     char     riff[4];
     uint32_t overall_size;
@@ -21,19 +26,21 @@ typedef struct {
     uint32_t data_size;
 } __attribute__((packed)) WAV_Header;
 
-//\\ --Sound Blaster 16-- \\//
-int reset_sb16();
+int  reset_sb16(void);
 void sb16_write_dsp(uint8_t data);
-extern uint8_t sb16_read_dsp();
-void setup_dma(uint32_t buffer_addr, uint32_t length);
+uint8_t sb16_read_dsp(void);
+void sb16_irq5_handler(void);
+void sb16_set_format(uint32_t sample_rate, uint8_t bits_per_sample, uint8_t channels);
 
-//\\ --PC Speaker-- \\//
+void prepare_audio_cluster(uint32_t start_cluster, uint32_t file_size);
+void play_wav(uint8_t* wav_data);
+void play_wav_stream_cluster(uint32_t start_cluster, uint32_t file_size);
+void play_wav_file(const char* filename);
+
 void play_sound(unsigned int nFrequence);
-void stop_sound();
-void beep();
+void stop_sound(void);
+void beep(void);
 void beep_with_duration(int freq, int duration);
 void beep_freq(int freq);
-void prepare_audio(uint32_t start_lba);
-void play_wav(uint8_t* wav_data);
 
 #endif
