@@ -32,16 +32,13 @@ $(HDD32_IMG):
 	dd if=/dev/zero of=$(HDD32_IMG) bs=1M count=1024
 	mkfs.fat -F 32 $(HDD32_IMG)
 	mcopy -i $(HDD32_IMG) test.txt ::test.txt
-	mcopy -i $(HDD32_IMG) beep.asm ::beep.asm
 	mcopy -i $(HDD32_IMG) hi.bin ::hi.bin
 	mcopy -i $(HDD32_IMG) kv2.wav ::kv2.wav
 	mcopy -i $(HDD32_IMG) snowy.wav ::snowy.wav
 	mcopy -i $(HDD32_IMG) snowy.bmp ::snowy.bmp
-	mcopy -i $(HDD32_IMG) kv.wav ::kv.wav
 	mcopy -i $(HDD32_IMG) yumul.wav ::yumul.wav
 	mcopy -i $(HDD32_IMG) gencosman.wav ::gencosman.wav
 	mcopy -i $(HDD32_IMG) startup.wav ::startup.wav
-	mcopy -i $(HDD32_IMG) DOOM1.WAD ::DOOM1.WAD
 	mmd -i $(HDD32_IMG) ::/testdir
 
 kernel.bin: $(BOOT_OBJ) $(OBJS) $(ISR_OBJ) $(TSK_OBJ)
