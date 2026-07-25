@@ -4,7 +4,12 @@ This is my first attempt at creating an operating system. It is a minimal OS pro
 
 ## Features
 
-FAT32+Auto İnit incoming
+FAT32(read/write)
+
+Mini Assembler
+
+BMP Wiever
+
 
 Minimal kernel with a terminal prompt (>)
 
@@ -18,9 +23,9 @@ Screen color changes
 
 VESA Graphics 1024x768
 
-FAT12 FS
+FAT12 FS(read only)
 
-WAV sound play
+WAV sound play(high quality support and Auto init)
 
 **Notes**
 
@@ -64,6 +69,9 @@ make run
 ```
 
 ## Commands
+```acmd
+aira
+```
 ```acmd
 nano
 ```
@@ -112,6 +120,31 @@ Test panic screen
 ls
 ```
 list directory
+```acmd
+cd 'dir name'
+```
+```acmd
+mkdir 'dir name'
+```
+```acmd
+run '.bin'
+```
+```acmd
+asm code.asm out.bin
+```
+first write code in nano
+```acmd
+play '.wav'
+```
+```acmd
+cat 'file'
+```
+```acmd
+write 'file name' 'data'
+```
+```acmd
+wiev '.bmp'
+```
 ## Aira Proggraming Language Tutorial
 ```
 print("hello world")
