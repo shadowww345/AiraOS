@@ -9,6 +9,7 @@
 
 unsigned int bgcolor = 0xFF0033;
 const char *username="Live-Session-User";
+const char *terminal=username+"$ ";
 int file_size = 0; 
 char file_system_buffer[4096]; 
 struct File files[10];
@@ -121,7 +122,7 @@ void kernel_main() {
     print(aira_os);
     draw_status_bar();
     print("Welcome To AiraOS!\n");
-    print("Live-Session-User$ ");
+    print(terminal);
     outb(0x3D4, 0x0A);
     outb(0x3D5, (inb(0x3D5) & 0xC0) | 0);
     outb(0x3D4, 0x0B);
@@ -285,7 +286,7 @@ void kernel_main() {
                     }
                     else if (idx > 0) print("Undefined Command\n");
                     
-                    idx = 0; print("Live-Session-User$ ");
+                    idx = 0; print(terminal);
                 } else if (c == '\b' && idx > 0) {
                     idx--; put_char('\b');
                 } else if (c != 0 && idx < 63) {
