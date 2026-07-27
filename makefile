@@ -19,7 +19,7 @@ TSK_OBJ= kernel/task_switch.o
 
 all: aira.iso $(FLOPPY_IMG) $(HDD32_IMG)
 #ffmpeg -i input.mp3 -acodec pcm_u8 -ac 1 -ar 44100 -f wav output.wav
-$(FLOPPY_IMG): test.txt startup.wav genc_osman.wav
+$(FLOPPY_IMG): test.txt startup.wav
 	rm -f $(FLOPPY_IMG)
 	dd if=/dev/zero of=$(FLOPPY_IMG) bs=1024 count=30000
 	mkfs.fat -F 12 $(FLOPPY_IMG)
