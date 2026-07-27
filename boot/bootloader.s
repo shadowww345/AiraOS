@@ -18,6 +18,18 @@ extern kernel_main
 global _start
 
 _start:
+    lgdt [gdt_descriptor]
+
+    mov ax, 0x10
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+
+    jmp 0x08:.flush_cs
+
+.flush_cs:
     mov esp, stack_top
     call kernel_main
 
@@ -27,21 +39,21 @@ _start:
 
 global inb
 inb:
-    push ebp           
+    push ebp
     mov ebp, esp
-    
-    xor eax, eax         
-    mov edx, [ebp + 8]  
-    in al, dx      
-    
+
+    xor eax, eax
+    mov edx, [ebp + 8]
+    in al, dx
+
     pop ebp
     ret
 
 global outb
 outb:
-    mov edx, [esp + 4]   
-    mov al, [esp + 8]    
-    out dx, al       
+    mov edx, [esp + 4]
+    mov al, [esp + 8]
+    out dx, al
     ret
 
 global bios_read_sector
@@ -59,12 +71,39 @@ bios_read_sector:
     mov bx, [bp+20]
 
     int 13h
-    
+
     pop bp
     ret
-    
+
+section .data
+align 8
+gdt_start:
+    dq 0x0000000000000000
+
+gdt_code:
+    dw 0xFFFF
+    dw 0x0000
+    db 0x00
+    db 10011010b
+    db 11001111b
+    db 0x00
+
+gdt_data:
+    dw 0xFFFF
+    dw 0x0000
+    db 0x00
+    db 10010010b
+    db 11001111b
+    db 0x00
+
+gdt_end:
+
+gdt_descriptor:
+    dw gdt_end - gdt_start - 1
+    dd gdt_start
+
 section .bss
 align 16
 stack_bottom:
-    resb 16384 
+    resb 16384
 stack_top:
